@@ -35,36 +35,44 @@
           @endif
           
         </div>
-        <form action="{{url('sub-update-category')}}" method="post" enctype="multipart/form-data">
+        <form action="{{url('spinning-wheel-slab-item-update')}}" method="post" enctype="multipart/form-data">
                    
                            {{csrf_field()}}
                     <div class="row">
-                    <input type="hidden" name="category_id" value="{{ $ed_cat->id}}">
+                    <input type="hidden" name="id" value="{{ $ed_cat->id}}">
                       <div class="col-md-12">
                         <div class="form-group row">
-                          <label class="col-sm-2 col-form-label">Category Name</label>
+                          <label class="col-sm-2 col-form-label"> Name</label>
                           <div class="col-sm-9">
-                          <input type="text" name="category" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Category Name" value="{{ $ed_cat->sub_cat_name}}">
+                          <input type="text" name="name" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Category Name" value="{{ $ed_cat->name}}">
                           </div>
                         </div>
                       </div>
 
                       <div class="col-md-12">
                         <div class="form-group row">
-                          <label class="col-sm-2 col-form-label"> Category</label><span style="color:red">*</span>
+                          <label class="col-sm-2 col-form-label"> Image</label>
                           <div class="col-sm-9">
-                          <select class="form-control" name="sub_cate_name" required="">
+                          <input type="file"  name="image" required="" value=""/>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-2 col-form-label"> slab</label><span style="color:red">*</span>
+                          <div class="col-sm-9">
+                          <select class="form-control" name="slab_id" required="">
                                           <option value="0">Select</option>
                                             @foreach($category as $category)
-@if($category->id==$ed_cat->id)
-<option value="{{$category->id}}">{{ $category->cat_name }}</option>
-@else
-<option value="{{$category->id}}">{{ $category->cat_name }}</option>
-@endif
-                                           
-                              
-                                           
+                                      @if($category->id==$ed_cat->id)
+                                      <option value="{{$category->id}}">{{ $category->name }}</option>
+                                      @else
+                                      <option value="{{$category->id}}">{{ $category->name }}</option>
+                                      @endif
 
+
+      
                                            @endforeach
                                     
                                         </select>

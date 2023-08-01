@@ -13,7 +13,7 @@
                                  <h4 class="card-title">Add Item</h4>
                         </div>
                            <div class="col-md-6 heading">
-                             <a href="{{URL::to('scrach-card/index')}}" class="backicon"><i class="mdi mdi-backburger"></i></a>
+                             <a href="{{URL::to('spinning-wheel-slab-item/index')}}" class="backicon"><i class="mdi mdi-backburger"></i></a>
                         </div>
                         <div class="col-md-6">
                         </div>
@@ -52,7 +52,7 @@
                       
                       <div class="col-md-12">
                         <div class="form-group row">
-                          <label class="col-sm-2 col-form-label" >Name</label><span style="color:red">*</span>
+                          <label class="col-sm-2 col-form-label" >Slab</label><span style="color:red">*</span>
                           <div class="col-sm-9">
                        
                           <select class="form-control" name="slab_id" required="">

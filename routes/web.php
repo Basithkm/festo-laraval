@@ -170,15 +170,12 @@ Route::post('spinning-wheel-slab-update', 'App\Http\Controllers\SpinningWheelSla
 Route::get('spinning-wheel-slab-delete/{id}', 'App\Http\Controllers\SpinningWheelSlabController@delete');
 
 
-Route::get('spinning-wheel-slab-item/index','App\Http\Controllers\Spinning_wheel_slab_itemController@index');
-Route::get('spinning-wheel-slab-item/create','App\Http\Controllers\Spinning_wheel_slab_itemController@create');
-Route::post('spinning-wheel-slab-item-store','App\Http\Controllers\Spinning_wheel_slab_itemController@store');
-// Route::get('spinning-wheel-slab-item-edit/{id}', 'App\Http\Controllers\Spinning_wheel_slab_itemController@edit');
-// Route::post('spinning-wheel-slab-item-update', 'App\Http\Controllers\Spinning_wheel_slab_itemController@update');
-Route::get('spinning-wheel-slab-item-delete/{id}', 'App\Http\Controllers\Spinning_wheel_slab_itemController@delete');
-
-
-
+Route::get('spinning-wheel-slab-item/index','App\Http\Controllers\SpinningWheelSlabItemController@index');
+Route::get('spinning-wheel-slab-item/create','App\Http\Controllers\SpinningWheelSlabItemController@create');
+Route::post('spinning-wheel-slab-item-store','App\Http\Controllers\SpinningWheelSlabItemController@store');
+Route::get('spinning-wheel-slab-item-edit/{id}', 'App\Http\Controllers\SpinningWheelSlabItemController@edit');
+Route::post('spinning-wheel-slab-item-update', 'App\Http\Controllers\SpinningWheelSlabItemController@update');
+Route::get('spinning-wheel-slab-item-delete/{id}', 'App\Http\Controllers\SpinningWheelSlabItemController@delete');
 
 
 
@@ -186,6 +183,8 @@ Route::get('spinning-wheel/index','App\Http\Controllers\ScrachCardController@ind
 Route::get('spinning-wheel/create','App\Http\Controllers\ScrachCardController@create');
 Route::post('spinning-wheel-add-new','App\Http\Controllers\ScrachCardController@store');
 Route::get('spinning-wheel-delete/{id}', 'App\Http\Controllers\ScrachCardController@delete_scrach');
+
+
 
 Route::get('/brands', 'App\Http\Controllers\BrandController@index');
 Route::get('/add-brand', 'App\Http\Controllers\BrandController@create');
@@ -202,7 +201,6 @@ Route::get('/user_reviews', 'App\Http\Controllers\UserReviewController@user_revi
 Route::get('/edit-review-stat/{id}', 'App\Http\Controllers\UserReviewController@edit_review_status');
 Route::post('update-review','App\Http\Controllers\UserReviewController@update_review');
 Route::get('delete-review-stat/{id}', 'App\Http\Controllers\UserReviewController@delete_review');
-
 Route::get('out-of-stock-list', 'App\Http\Controllers\ShoppingController@out_of_stock');
 Route::get('view-out-of-stock-list/{id}', 'App\Http\Controllers\ShoppingController@view_out_of_stock');
 

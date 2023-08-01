@@ -12,7 +12,7 @@ use App\Models\SpinningSlabItem;
 
 use Image;
 
-class Spinning_wheel_slab_itemController extends Controller
+class SpinningWheelSlabItemController extends Controller
 {
     //
     public function index()
@@ -89,7 +89,12 @@ $spinning->save();
             try {
          
                 if (session('adminusername')) {
-                    $data['slab'] = spinning_wheel_item::find($id);
+                    // $data['slab'] = SpinningSlabItem::find($id);
+                    $data['ed_cat'] = SpinningSlabItem::where('id','=',$id)
+                                    ->first();
+                    $data['category']=SpinningSlab::get();
+            
+                    // return view('sub-category.edit',$data);
                     return view('spinning-slab-item.edit',$data);
                     }
                     else {
@@ -102,27 +107,29 @@ $spinning->save();
         public function update(Request $request)
         {
           
-           
-            
-            
-               
+                 
                 $data = request()->validate([
                     'id'=>'required',
                     'name' => 'required',
-                    'min_price' => 'required',
-                    'max_price' => 'required',
+                    'image' => 'required',
+                    'slab_id' => 'required',
                 ]);
                 $id = $request->input('id');
                 try {
+
+                    $photo = $request->file('image'); 
+                    $storyimagename = time().'.'.$photo->getClientOriginalExtension();
+                    $destinationPath = 'uploads/spinning';
+                    $thumb_img = Image::make($photo->getRealPath())->resize(117,99);
+                    $thumb_img->save($destinationPath.'/'.$storyimagename,80);
                    
-    $spinning= spinning_wheel_item::find($id);
+    $spinning= SpinningSlabItem::find($id);
     $spinning->name=$request->name;
-    $spinning->min_price=$request->min_price;
-    $spinning->max_price=$request->max_price;
+    $spinning->image=$storyimagename;
+    $spinning->slab_id=$request->slab_id;
     $spinning->save();
-     
-            
-                                    return redirect('spinning-slab-item/index');  
+       
+    return redirect('spinning-wheel-slab-item/index');  
               
             
         } catch (\Exception $e) {
@@ -135,7 +142,9 @@ $spinning->save();
                 SpinningSlabItem::where('id','=',$id)->delete();       
                
                 $request->session()->flash('succ','Succesfully Deleted!');
-                return redirect('spinning-slab-item/index');
+
+                return redirect('spinning-wheel-slab-item/index'); 
+                
             } catch (\Exception $e) {
                 return $e->getMessage();
             }
